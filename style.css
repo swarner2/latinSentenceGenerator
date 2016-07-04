@@ -1,3 +1,6 @@
+html {
+	height: 100%
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -23,6 +26,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin: 0px auto;
+	height: auto;
 }
 header {
 	background: rgba(255, 255, 255, 0.85);
@@ -77,10 +81,11 @@ header p {
 	position:relative;
 	top:1px;
 }
-
-#output {
+section {
+	background: rgba(255, 255, 255, 0.85);
 	text-align: center;
-  background: rgba(255, 255, 255, 0.85);
+}
+#output {
 	padding: 10px;
 	padding-top: 5px;
 	margin-top: 10%;
