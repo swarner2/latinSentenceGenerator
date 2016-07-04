@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Sentence Generator</title>
+	
+		<link rel="stylesheet" href="style.css" >
+		
+		<script src="js/util.js"></script>
+		<script src="js/Noun.js"></script>
+		<script src="js/Verb.js"></script>
+		<script src="js/Adjective.js"></script>
+		<script src="js/declensions.js"></script>
+		<script src="js/dictionary.js"></script>
+		<script src="js/grammar.js"></script>
+		<script src="js/sentenceGenScript.js"></script>
+
+</head>
+
+<body>
+
+<div class="mainContainer">
+	
+<div class="container">
+	<div id="qAndA">
+		<div class="output">
+			<h1 id="english"> English </h1>		
+		</div>
+		<div class="output">
+			<h1 id="latin"> Latin </h1>
+		</div>
+	</div>
+	<div id="qAndAButtons">
+		<input type="button" value = "Create" onclick=createSentence('english')>  </input>
+		<input type = "button" value = "Show Answer" onclick=showAnswer('latin')></input>
+	</div>
+	<div id="optionsContainer">
+		<div class="options">	
+			<h2>Core Case Uses</h2>
+			<ul>
+				<li><input type="checkbox" class="caseUse" id="subject">Subject</input></li>
+				<li><input type="checkbox" class="caseUse" id="directObject">Direct Object</input></li>
+				<li><input type="checkbox" class="caseUse" id="verb">Verb</input></li>
+				<li><input type="checkbox" class="caseUse" id="prepositionAblative">Preposition: Ablative</input></li>
+			</ul>
+		</div>	
+		<div class="options">
+			<h2>Description</h2>
+			<ul>
+				<li><input type="checkbox" class="caseUse" id="adjective">Adjectives </input></li>
+				<li><input type="checkbox" class="caseUse" id="predNom">Predicate Nominative </input></li>
+				<li><input type="checkbox" class="caseUse" id="genPos">Genitive: Possession </input></li>											
+				<li><input type="checkbox" class="caseUse" id="prepPhraseAbl">Ablative: Prepositional Phrase</input></li>
+				<li><input type="checkbox" class="caseUse" id="prepPhraseAbl">Accusative: Prepositional Phrase</input></li>	
+			</ul>		
+		</div>	
+		<div class="options">	
+			<h2> Structures</h2>
+			<ul>
+				<li><input type="checkbox" class="structure" id="subjLvPred">Subject / Linking Verb / Predicate Nominative</input></li>
+				<li><input type="checkbox" class="structure" id="subjDoV">Subject / Direct Object / Verb </input></li>
+				<li><input type="checkbox" class="structure" id="subjIntranV">Subject / Intransitive Verb</input></li>
+				<li><input type="checkbox" class="structure" id="subjAgentPassiveV">Subject / Agent / Passive Verb</input></li>
+			</ul>
+		</div>	
+	</div>
+	<div class="chaptersContainer">
+		<ul>LATIN I: <input type="checkbox" class="chapter" id="latinI" onclick=clickOthers('latinI')>
+			<li>Chapter 1: <input type="checkbox" class="chapter" id="I" onclick=clickOthers('I')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="I.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="I.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="I.3" /></li>
+				</ul>
+			<li>Chapter 2: <input type="checkbox" class="chapter" id="II" onclick=clickOthers('II')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="II.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="II.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="II.3" /></li>
+				</ul>
+			<li>Chapter 3: <input type="checkbox" class="chapter" id="III" onclick=clickOthers('III')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="III.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="III.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="III.3" /></li>
+				</ul>
+			<li>Chapter 4: <input type="checkbox" class="chapter" id="IV" onclick=clickOthers('IV')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="IV.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="IV.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="IV.3" /></li>
+				</ul>
+			<li>Chapter 5: <input type="checkbox" class="chapter" id="V" onclick=clickOthers('V')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="V.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="V.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="V.3" /></li>
+				</ul>
+			<li>Chapter 6: <input type="checkbox" class="chapter" id="VI" onclick=clickOthers('VI')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="VI.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="VI.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="VI.3" /></li>
+				</ul>
+			<li>Chapter 7: <input type="checkbox" class="chapter" id="VII" onclick=clickOthers('VII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="VII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="VII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="VII.3" /></li>
+				</ul>
+			<li>Chapter 8: <input type="checkbox" class="chapter" id="VIII" onclick=clickOthers('VIII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="VIII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="VIII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="VIII.3" /></li>
+				</ul>
+			<li>Chapter 9: <input type="checkbox" class="chapter" id="IX" onclick=clickOthers('IX')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="IX.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="IX.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="IX.3" /></li>
+				</ul>
+			<li>Chapter 10: <input type="checkbox" class="chapter" id="X" onclick=clickOthers('X')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="X.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="X.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="X.3" /></li>
+				</ul>
+			<li>Chapter 11: <input type="checkbox" class="chapter" id="XI" onclick=clickOthers('XI')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XI.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XI.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XI.3" /></li>
+				</ul>	
+			<li>Chapter 12: <input type="checkbox" class="chapter" id="XII" onclick=clickOthers('XII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XII.3" /></li>
+				</ul>	
+		</ul>
+	</div>
+	<div class="chaptersContainer">
+		<ul>LATIN II: <input type="checkbox" class="chapter" id="latinII" onclick=clickOthers('latinII')>
+			<li>Chapter 13: <input type="checkbox" class="chapter" id="XIII" onclick=clickOthers('XIII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XIII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XIII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XIII.3" /></li>
+				</ul>
+			<li>Chapter 14: <input type="checkbox" class="chapter" id="XIV" onclick=clickOthers('XIV')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XIV.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XIV.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XIV.3" /></li>
+				</ul>
+			<li>Chapter 15: <input type="checkbox" class="chapter" id="XV" onclick=clickOthers('XV')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XV.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XV.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XV.3" /></li>
+				</ul>
+			<li>Chapter 16: <input type="checkbox" class="chapter" id="XVI" onclick=clickOthers('XVI')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XVI.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XVI.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XVI.3" /></li>
+				</ul>
+			<li>Chapter 17: <input type="checkbox" class="chapter" id="XVII" onclick=clickOthers('XVII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XVII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XVII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XVII.3" /></li>
+				</ul>
+			<li>Chapter 18: <input type="checkbox" class="chapter" id="XVIII" onclick=clickOthers('XVIII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XVIII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XVIII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XVIII.3" /></li>
+				</ul>
+			<li>Chapter 19: <input type="checkbox" class="chapter" id="XIX" onclick=clickOthers('XIX')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XIX.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XIX.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XIX.3" /></li>
+				</ul>
+			<li>Chapter 20: <input type="checkbox" class="chapter" id="XX" onclick=clickOthers('XX')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XX.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XX.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XX.3" /></li>
+				</ul>
+			<li>Chapter 21: <input type="checkbox" class="chapter" id="XXI" onclick=clickOthers('XXI')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXI.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXI.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXI.3" /></li>
+				</ul>
+			<li>Chapter 22: <input type="checkbox" class="chapter" id="XXII" onclick=clickOthers('XXII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXII.3" /></li>
+				</ul>
+			<li>Chapter 23: <input type="checkbox" class="chapter" id="XXIII" onclick=clickOthers('XXIII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXIII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXIII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXIII.3" /></li>
+				</ul>	
+			<li>Chapter 24: <input type="checkbox" class="chapter" id="XXIV" onclick=clickOthers('XXIV')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXIV.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXIV.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXIV.3" /></li>
+				</ul>	
+		</ul>
+	</div>
+	<div class="chaptersContainer">
+		<ul>LATIN III: <input type="checkbox" class="chapter" id="latinIII" onclick=clickOthers('latinIII')>
+			<li>Chapter 25: <input type="checkbox" class="chapter" id="XXV" onclick=clickOthers('XXV')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXV.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXV.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXV.3" /></li>
+				</ul>
+			<li>Chapter 26: <input type="checkbox" class="chapter" id="XXVI" onclick=clickOthers('XXVI')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXVI.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXVI.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXVI.3" /></li>
+				</ul>
+			<li>Chapter 27: <input type="checkbox" class="chapter" id="XXVII" onclick=clickOthers('XXVII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXVII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXVII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXVII.3" /></li>
+				</ul>
+			<li>Chapter 28: <input type="checkbox" class="chapter" id="XXVIII" onclick=clickOthers('XXVIII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXVIII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXVIII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXVIII.3" /></li>
+				</ul>
+			<li>Chapter 29: <input type="checkbox" class="chapter" id="XXIX" onclick=clickOthers('XXIX')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXIX.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXIX.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXIX.3" /></li>
+				</ul>
+			<li>Chapter 30: <input type="checkbox" class="chapter" id="XXX" onclick=clickOthers('XXX')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXX.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXX.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXX.3" /></li>
+				</ul>
+			<li>Chapter 31: <input type="checkbox" class="chapter" id="XXXI" onclick=clickOthers('XXXI')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXXI.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXXI.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXXI.3" /></li>
+				</ul>
+			<li>Chapter 32: <input type="checkbox" class="chapter" id="XXXII" onclick=clickOthers('XXXII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXXII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXXII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXXII.3" /></li>
+				</ul>
+			<li>Chapter 33: <input type="checkbox" class="chapter" id="XXXIII" onclick=clickOthers('XXXIII')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXXIII.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXXIII.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXXIII.3" /></li>
+				</ul>
+			<li>Chapter 34: <input type="checkbox" class="chapter" id="XXXIV" onclick=clickOthers('XXXIV')></li>
+				<ul>
+					<li>Section 1: <input type="checkbox" class="chapterSection" id="XXXIV.1" /></li>
+					<li>Section 2: <input type="checkbox" class="chapterSection" id="XXXIV.2" /></li>
+					<li>Section 3: <input type="checkbox" class="chapterSection" id="XXXIV.3" /></li>
+				</ul>
+		</ul>
+	</div>
+</div>
+<script>initialize()</script>
+</body>

@@ -1,0 +1,28 @@
+body {
+	background-color: #f1f1f1;
+}
+#top {
+	margin: 25px;
+	color: blue;
+}
+#page {
+	margin: 25px;
+}
+
+#left-col {
+	width: 175px;
+	height: 909px;
+	float: left;
+	margin-top: 25px;
+	margin-right: 10px;
+}
+
+.options {
+	float: left;
+	width: 400px;
+	
+}
+.output {
+	text-align: center;
+
+}

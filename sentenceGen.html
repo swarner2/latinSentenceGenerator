@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Sentence Generator</title>
+		<link rel="stylesheet" href="style.css" >
+</head>
+
+<body>
+<header class='col-12'> Latin Sentence Generator</header>
+<div class="container">
+		<div id="output">
+			<h1 id="english"> English </h1>
+			<h1 id="latin"> Latin </h1>
+			<input type="button" value = "Create" onclick=createSentence('english')>  </input>
+			<input type = "button" value = "Show Answer" onclick=showAnswer('latin')></input>
+		</div>
+		<div id="options" class="row">
+			<h2>Core Case Uses</h2>
+			<p>
+				<input type="checkbox" checked class="caseUse" id="subject">Subject</input></br>
+				<input type="checkbox" checked class="caseUse" id="directObject">Direct Object</input></br>
+				<input type="checkbox" checked class="caseUse" id="verb">Verb</input></br>
+				<input type="checkbox" checked class="caseUse" id="prepositionAblative">Preposition: Ablative</input></br>
+			</p>
+		</div>
+</div>
+<script src="sentenceGenScript.js"></script>
+</body>
